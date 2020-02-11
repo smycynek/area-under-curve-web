@@ -1,2 +1,3 @@
-# area-under-curve-web
-React front-end for area-under-curve
+## Area-React
+
+A react front-end for area-under-curve
