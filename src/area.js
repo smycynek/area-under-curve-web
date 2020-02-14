@@ -1,9 +1,13 @@
 import React from 'react';
 import './App.css';
 import Output from './output';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import 'react-tabs/style/react-tabs.css';
+
 const area_lib = require('area-under-curve/area_lib')
 const algo = require('area-under-curve/algorithm')
 const resizedTextbox = { width: "50px", height: "30px" };
+
 
 class Area extends React.Component {
   constructor(props) {
@@ -16,7 +20,8 @@ class Area extends React.Component {
       lower: 0,
       upper: 10,
       step: 0.1,
-      algorithm: "midpoint"
+      algorithm: "midpoint",
+      tabIndex: 0
     }
   }
 
@@ -37,10 +42,6 @@ class Area extends React.Component {
   handleQuadratic = (event) => this.setState({ quadratic: event.target.value });
   handleCubic = (event) => this.setState({ cubic: event.target.value });
   handleStep = (event) => this.setState({ step: event.target.value });
-  handleOptionChange = (event) => this.setState({ algorithm: event.target.value });
-
- 
-
 
   evaluate() {
     const cmap = new Map([[0, Number(this.state.constant)], [1, Number(this.state.linear)], [2, Number(this.state.quadratic)], [3, Number(this.state.cubic)],]);
@@ -50,17 +51,17 @@ class Area extends React.Component {
     data["polynomial"] = poly1.toString()
     data["bounds"] = bounds1.toString()
     data["high_low"] = [poly1.evaluate(this.state.lower), poly1.evaluate(this.state.upper)].toString()
-    const chosen_algo = this.state.algorithm;
+    const chosen_algo = this.state.tabIndex;
     let eval_chosen_algo = algo.midpoint;
 
     switch (chosen_algo) {
-      case "midpoint":
+      case 0:
         eval_chosen_algo = algo.midpoint;
         break;
-      case "trapezoid":
+      case 1:
         eval_chosen_algo = algo.trapezoid;
         break;
-      case "simpson":
+      case 2:
         eval_chosen_algo = algo.simpson;
         break;
       default:
@@ -72,9 +73,12 @@ class Area extends React.Component {
   }
 
   render() {
+
     console.log("Render")
     return (
       <div className="App">
+
+
         <h1>Area under curve</h1>
         <h2> Polynomial</h2>
         <p>Enter exponent coefficients:
@@ -90,24 +94,21 @@ class Area extends React.Component {
         Upper: <input style={resizedTextbox} type="number" min="-10" max="10" step="1" value={this.state.upper} onChange={this.handleUpper} />
 
         <h2>Algorithm</h2>
-        <div className="radio">
-          <label>
-            <input type="radio" value="midpoint" checked={this.state.algorithm === 'midpoint'} onChange={this.handleOptionChange} />
-            Midpoint
-      </label>
-        </div>
-        <div className="radio">
-          <label>
-            <input type="radio" value="trapezoid" checked={this.state.algorithm === 'trapezoid'} onChange={this.handleOptionChange} />
-            Trapezoid
-      </label>
-        </div>
-        <div className="radio">
-          <label>
-            <input type="radio" value="simpson" checked={this.state.algorithm === 'simpson'} onChange={this.handleOptionChange} />
-            Simpson
-      </label>
-        </div>
+        <React.Fragment>
+          <Tabs onSelect={tabIndex => this.setState({ tabIndex })}>
+            <TabList>
+              <Tab>Midpoint</Tab>
+              <Tab>Trapezoid</Tab>
+              <Tab>Simpson</Tab>
+            </TabList>
+            <TabPanel></TabPanel>
+            <TabPanel></TabPanel>
+            <TabPanel></TabPanel>
+          </Tabs>
+
+        </React.Fragment>
+
+
         <h2>Output</h2>
         <Output data={
           this.evaluate()} />
