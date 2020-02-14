@@ -5,7 +5,7 @@ import Select from 'react-select'
 
 const area_lib = require('area-under-curve/area_lib')
 const algo = require('area-under-curve/algorithm')
-const resizedTextbox = { width: "50px", height: "50px" };
+const resizedTextbox = { width: "40px", height: "30px" };
 
 class Area extends React.Component {
   constructor(props) {
@@ -18,7 +18,6 @@ class Area extends React.Component {
       lower: 0,
       upper: 10,
       step: 0.1,
-      algorithm: "midpoint",
       selectedAlgorithm: null
     }
   }
@@ -60,7 +59,7 @@ class Area extends React.Component {
     return data;
   }
 
-  handleChange = selectedAlgorithm => {
+  handleAlgorithmChange = selectedAlgorithm => {
     this.setState(
       { selectedAlgorithm },
       () => console.log(`Option selected:`, this.state.selectedAlgorithm)
@@ -69,10 +68,10 @@ class Area extends React.Component {
 
   render() {
     const { selectedAlgorithm } = this.state;
-    console.log("Render")
-    const options = [{ value: algo.midpoint, label: "midpoint" },
+    const algorithmOptions = [{ value: algo.midpoint, label: "midpoint" },
     { value: algo.trapezoid, label: "trapezoid" },
-    { value: algo.simpson, label: "simpson" }]
+    { value: algo.simpson, label: "simpson" }
+  ]
 
     return (
       <div className="App">
@@ -87,16 +86,17 @@ class Area extends React.Component {
         <h2>Step Size</h2>
         <input style={resizedTextbox} type="number" min="0.1" max="1.0" step="0.1" value={this.state.step} onChange={this.handleStep} />
         <h2>Bounds</h2>
-        Lower: <input style={resizedTextbox} type="number" min="-10" max="10" step="1" value={this.state.lower} onChange={this.handleLower} />
-        Upper: <input style={resizedTextbox} type="number" min="-10" max="10" step="1" value={this.state.upper} onChange={this.handleUpper} />
+        <label for="upper">Upper</label> <input name="upper" style={resizedTextbox} type="number" min="-10" max="10" step="1" value={this.state.lower} onChange={this.handleLower} />
+        <label for="lower">Lower</label> <input name="lower" style={resizedTextbox} type="number" min="-10" max="10" step="1" value={this.state.upper} onChange={this.handleUpper} />
 
         <h2>Algorithm</h2>
         <React.Fragment>
 
-          <Select options={options}
+          <Select options={algorithmOptions}
+            className='select'
             width='200px'
             value={selectedAlgorithm}
-            onChange={this.handleChange} />
+            onChange={this.handleAlgorithmChange} />
         </React.Fragment>
         <h2>Output</h2>
         <Output data={
