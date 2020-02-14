@@ -52,6 +52,10 @@ class Area extends React.Component {
     data["bounds"] = bounds1.toString()
     data["high_low"] = [poly1.evaluate(this.state.lower), poly1.evaluate(this.state.upper)].toString()
     const chosen_algo = this.state.tabIndex;
+    algo.midpoint.name2 = "midpoint";
+    algo.trapezoid.name2 = "trapezoid";
+    algo.simpson.name2="simpson";
+    
     let eval_chosen_algo = algo.midpoint;
 
     switch (chosen_algo) {
@@ -67,7 +71,7 @@ class Area extends React.Component {
       default:
         eval_chosen_algo = algo.midpoint;
     }
-    data["algorithm"] = eval_chosen_algo.name;
+    data["algorithm"] = eval_chosen_algo.name2;
     data["area"] = area_lib.areaUnderCurve(poly1, bounds1, eval_chosen_algo)
     return data;
   }

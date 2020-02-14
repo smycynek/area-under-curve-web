@@ -1,5 +1,6 @@
 {
-  "name": "auc",
+  "name": "area-under-curve",
+  "homepage": "http://stevenvictor.net/area_under_curve",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
