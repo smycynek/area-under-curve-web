@@ -79,6 +79,7 @@ function Polynomial({ data }) {
       <QuadraticTerm coefficient={data.get(2)} /> {needsConcatination(2, data) ? <Plus /> : null}
       <LinearTerm coefficient={data.get(1)} /> {needsConcatination(1, data) ? <Plus /> : null}
       <ConstantTerm coefficient={data.get(0)} />
+      <span>{(data.get(3)===0) && (data.get(2)===0) && (data.get(1)===0) && (data.get(0)===0) ? "0" : null}</span>
     </React.Fragment>
   )
 }
