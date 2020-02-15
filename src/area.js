@@ -77,7 +77,7 @@ class Area extends React.Component {
       <div className="App">
         <h1>Area under curve</h1>
         <h2>Polynomial</h2>
-        <p>Enter exponent coefficients: f(x) =
+        <p>f(x) =
         <input style={resizedTextbox} type="number" min="-10" max="10" step="1" value={this.state.cubic} onChange={this.handleCubic} />x<sup>3</sup> +
         <input style={resizedTextbox} type="number" min="-10" max="10" step="1" value={this.state.quadratic} onChange={this.handleQuadratic} />x<sup>2</sup> +
         <input style={resizedTextbox} type="number" min="-10" max="10" step="1" value={this.state.linear} onChange={this.handleLinear} />x +

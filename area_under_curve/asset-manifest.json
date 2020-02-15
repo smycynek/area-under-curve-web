@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/area_under_curve/static/css/main.f7575985.chunk.css",
+    "main.js": "/area_under_curve/static/js/main.aaa015a9.chunk.js",
+    "main.js.map": "/area_under_curve/static/js/main.aaa015a9.chunk.js.map",
+    "runtime-main.js": "/area_under_curve/static/js/runtime-main.b071b0fa.js",
+    "runtime-main.js.map": "/area_under_curve/static/js/runtime-main.b071b0fa.js.map",
+    "static/js/2.fdfe3d40.chunk.js": "/area_under_curve/static/js/2.fdfe3d40.chunk.js",
+    "static/js/2.fdfe3d40.chunk.js.map": "/area_under_curve/static/js/2.fdfe3d40.chunk.js.map",
+    "index.html": "/area_under_curve/index.html",
+    "precache-manifest.c166a182dfd207ea8362c964228cb635.js": "/area_under_curve/precache-manifest.c166a182dfd207ea8362c964228cb635.js",
+    "service-worker.js": "/area_under_curve/service-worker.js",
+    "static/css/main.f7575985.chunk.css.map": "/area_under_curve/static/css/main.f7575985.chunk.css.map",
+    "static/js/2.fdfe3d40.chunk.js.LICENSE.txt": "/area_under_curve/static/js/2.fdfe3d40.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b071b0fa.js",
+    "static/js/2.fdfe3d40.chunk.js",
+    "static/css/main.f7575985.chunk.css",
+    "static/js/main.aaa015a9.chunk.js"
+  ]
+}
