@@ -8,10 +8,6 @@ import InputNumber from 'rc-input-number';
 const area_lib = require('area-under-curve/area_lib')
 const algo = require('area-under-curve/algorithm')
 
-function validStep(num) {
-  return (!isNaN(num) && (num => .1) && (num <=10))
-}
-
 class Area extends React.Component {
   constructor(props) {
     super(props);
@@ -86,47 +82,50 @@ class Area extends React.Component {
   ]
 
     return (
+      
       <div className="App">
-       
+        <link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'/>
+  
         <h1>Area under curve</h1>
         
         <div>
         <h2>Polynomial</h2>
       
         <div>
-        <InputNumber  min= {-10} max= {10}  style={{ padding:5, width: 50 }}  value={this.state.cubic} onChange={this.handleCubic} />x<sup>3</sup> 
+        <InputNumber  min= {-10} max= {10}  style={{ borderColor: "black", margin:4, padding:5, width: 50 }}  value={this.state.cubic} onChange={this.handleCubic} /> x<sup>3</sup> 
         </div>
         <div>
-        <InputNumber  min= {-10} max= {10}  style={{ padding: 5, width: 50 }}  value={this.state.quadratic} onChange={this.handleQuadratic} />x<sup>2</sup> 
+        <InputNumber  min= {-10} max= {10}  style={{ borderColor: "black", margin:4, padding: 5, width: 50 }}  value={this.state.quadratic} onChange={this.handleQuadratic} /> x<sup>2</sup> 
         </div>
         <div>
-        <InputNumber  min= {-10} max= {10}  style={{ padding: 5, width: 50 }}  value={this.state.linear} onChange={this.handleLinear} />x 
+        <InputNumber  min= {-10} max= {10}  style={{ borderColor: "black", margin:4, padding: 5, width: 50 }}  value={this.state.linear} onChange={this.handleLinear} />  x
         </div>
         <div>
-        <InputNumber  min= {-10} max= {10}  style={{ padding: 5, width: 50 }}  value={this.state.constant} onChange={this.handleConstant} /> c
+        <InputNumber  min= {-10} max= {10}  style={{ borderColor: "black", margin:4, padding: 5, width: 50 }}  value={this.state.constant} onChange={this.handleConstant} /> c
         </div>
         </div>
         <div>
         <h2>Step Size</h2>
        
-        <InputNumber min={0.1} max={1.0} readonly = {true} style={{ width: 50 }}  step={0.1} value={this.state.step} onChange={this.handleStep} />
+        <InputNumber min={0.1} max={1.0} readonly = {true} style={{ borderColor: "black",margin:4, width: 50 }}  step={0.1} value={this.state.step} onChange={this.handleStep} />
         </div>
         <div>
         <h2>Bounds</h2>
    
         <div>
-        <label style={{padding:5}} for="lower">Lower</label> <InputNumber name="upper" style={{ width: 50 }} min={-10} max={10} step={1} value={this.state.lower} onChange={this.handleLower} />
-       
-        <label style={{padding:5}}  for="upper">Upper</label> <InputNumber name="lower" style={{ width: 50 }} min={-10} max={10} step={1} value={this.state.upper} onChange={this.handleUpper} />
+        <label style={{padding:5}} htmlFor="lower">Lower</label> <InputNumber name="upper" style={{ borderColor: "black", width: 50}} min={-10} max={10} step={1} value={this.state.lower} onChange={this.handleLower} />
+      
+        <label style={{padding:5}} htmlFor="upper">Upper</label> <InputNumber name="lower" style={{ borderColor: "black", width: 50 }} min={-10} max={10} step={1} value={this.state.upper} onChange={this.handleUpper} />
         </div>
         </div>
         <div>
         <h2>Algorithm</h2>
         <React.Fragment>
 
-          <Select options={algorithmOptions}
+          <Select options={algorithmOptions} menuPlacement="bottom"
             className='select'
             width='200px'
+            theme={{borderRadius:0, colors: { primary: "black", neutral0:"lightblue" }   }}
             value={selectedAlgorithm}
             onChange={this.handleAlgorithmChange} />
         </React.Fragment>

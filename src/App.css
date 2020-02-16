@@ -14,18 +14,33 @@
   }
 }
 
+input {
+  background-color: lightblue;
+}
+
+select {
+  background-color: lightblue;
+  font-family: 'Ubuntu', sans-serif;
+}
+body {
+  background-color: lightblue;
+  font-family: 'Ubuntu', sans-serif;
+}
 h1 {
   font-size: 18px;
+  font-family: 'Ubuntu', sans-serif;
 
 }
 
 h2 {
   font-size: 12px;
+  font-family: 'Ubuntu', sans-serif;
 }
 
 
 
-p,span,label,li,input {
+p,span,label,li,ul,input {
+  font-family: 'Ubuntu', sans-serif;
   font-size: 12px;
 }
 
