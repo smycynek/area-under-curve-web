@@ -5,14 +5,21 @@ function Plus(props) {
 }
 
 function Term({ power, coefficient = null }) {
+  let renderedCoefficient = coefficient
+  if ((coefficient === -1) && (power !==0)) {
+    renderedCoefficient = "-"
+  }
+  if ((coefficient === 1) && (power !==0)) {
+    renderedCoefficient = null
+  }
   if (power === 0) {
-    return <React.Fragment> {coefficient}</React.Fragment>
+    return <React.Fragment> {renderedCoefficient}</React.Fragment>
   }
   else if (power === 1) {
-    return <React.Fragment> {coefficient}x</React.Fragment>
+    return <React.Fragment> {renderedCoefficient}x</React.Fragment>
   }
   else {
-    return <React.Fragment> {coefficient}x<sup>{power}</sup></React.Fragment>
+    return <React.Fragment> {renderedCoefficient}x<sup>{power}</sup></React.Fragment>
   }
 }
 
@@ -20,10 +27,6 @@ function CubicTerm({ coefficient }) {
   if (coefficient === 0) {
     return null
   }
-  if (coefficient === 1) {
-    return (<Term power={3} />);
-  }
-
   return (<Term power={3} coefficient={coefficient} />)
 }
 
@@ -31,18 +34,12 @@ function QuadraticTerm({ coefficient }) {
   if (coefficient === 0) {
     return null
   }
-  if (coefficient === 1) {
-    return (<Term power={2} />);
-  }
   return (<Term power={2} coefficient={coefficient} />);
 }
 
 function LinearTerm({ coefficient }) {
   if (coefficient === 0) {
     return null
-  }
-  if (coefficient === 1) {
-    return (<Term power={1} />);
   }
   return (<Term power={1} coefficient={coefficient} />);
 }
@@ -55,8 +52,6 @@ function ConstantTerm({ coefficient }) {
 }
 
 function needsConcatination(power, data) {
-  //if (data.get(power-1) < 0)
-  //  return false
   switch (power) {
     case 3:
       return data.get(3) && data.get(2)
@@ -75,9 +70,9 @@ function Polynomial({ data }) {
   return (
     <React.Fragment>
       <span>f(x) = </span>
-      <CubicTerm coefficient={data.get(3)} /> {needsConcatination(3, data) ? <Plus /> : null}
-      <QuadraticTerm coefficient={data.get(2)} /> {needsConcatination(2, data) ? <Plus /> : null}
-      <LinearTerm coefficient={data.get(1)} /> {needsConcatination(1, data) ? <Plus /> : null}
+      <CubicTerm coefficient={data.get(3)} /> {needsConcatination(3, data) && (data.get(2) > 0) ? <Plus /> : null}
+      <QuadraticTerm coefficient={data.get(2)} /> {needsConcatination(2, data) && (data.get(1) > 0)  ? <Plus /> : null}
+      <LinearTerm coefficient={data.get(1)} /> {needsConcatination(1, data) && (data.get(0) > 0)  ? <Plus /> : null}
       <ConstantTerm coefficient={data.get(0)} />
       <span>{(data.get(3)===0) && (data.get(2)===0) && (data.get(1)===0) && (data.get(0)===0) ? "0" : null}</span>
     </React.Fragment>

@@ -15,7 +15,7 @@
 .env.development.local
 .env.test.local
 .env.production.local
-/area_under_curveß
+/area_under_curve
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*

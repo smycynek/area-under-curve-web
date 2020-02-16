@@ -122,15 +122,15 @@ class Area extends React.Component {
         <div>
         <h2>Step Size</h2>
        
-        <InputNumber min={0.1} max={1.0} readonly = {true} style={{ borderWidth:"2px", borderColor: "lightblue",margin:4, width: 50 }}  step={0.1} value={this.state.step} onChange={this.handleStep} />
+        <InputNumber min={0.1} max={1.0} readonly = {true} style={{ borderWidth:"2px", borderColor: "lightblue",margin:4, padding:5, width: 50 }}  step={0.1} value={this.state.step} onChange={this.handleStep} />
         </div>
         <div>
         <h2>Bounds</h2>
    
         <div>
-        <label style={{padding:5}} htmlFor="lower">Lower</label> <InputNumber name="upper" style={{ borderWidth:"2px", borderColor: "lightblue", width: 50}} min={-10} max={10} step={1} value={this.state.lower} onChange={this.handleLower} />
+        <label style={{padding:5}} htmlFor="lower">Lower</label> <InputNumber name="upper" style={{ borderWidth:"2px", borderColor: "lightblue", margin:4, padding:5, width: 50}} min={-10} max={10} step={1} value={this.state.lower} onChange={this.handleLower} />
       
-        <label style={{padding:5}} htmlFor="upper">Upper</label> <InputNumber name="lower" style={{ borderWidth:"2px", borderColor: "lightblue", width: 50 }} min={-10} max={10} step={1} value={this.state.upper} onChange={this.handleUpper} />
+        <label style={{padding:5}} htmlFor="upper">Upper</label> <InputNumber name="lower" style={{ borderWidth:"2px", borderColor: "lightblue", margin:4, padding:5, width: 50}} min={-10} max={10} step={1} value={this.state.upper} onChange={this.handleUpper} />
         </div>
         </div>
         <div>
