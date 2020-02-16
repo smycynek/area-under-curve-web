@@ -122,9 +122,8 @@ class Area extends React.Component {
         <h2>Algorithm</h2>
         <React.Fragment>
 
-          <Select options={algorithmOptions} menuPlacement="bottom"
+          <Select options={algorithmOptions} menuPlacement="bottom" 
             className='select'
-            width='200px'
             theme={{borderRadius:0, colors: { primary: "black", neutral0:"lightblue" }   }}
             value={selectedAlgorithm}
             onChange={this.handleAlgorithmChange} />

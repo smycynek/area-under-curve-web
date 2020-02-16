@@ -2,7 +2,9 @@
   text-align: left;
   margin-left: 20px;
 }
-
+a {
+  margin-left: 20px;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -14,6 +16,12 @@
   }
 }
 
+hr {
+  border: 0;
+    height: 1px;
+  background:black
+
+}
 input {
   background-color: lightblue;
 }
@@ -39,7 +47,7 @@ h2 {
 
 
 
-p,span,label,li,ul,input {
+a, p,span,label,li,ul,input {
   font-family: 'Ubuntu', sans-serif;
   font-size: 12px;
 }

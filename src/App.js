@@ -7,6 +7,10 @@ class App extends React.Component {
     return (
       <div>
         <Area />
+        <hr/>
+        <cite>
+        <a href="https://github.com/smycynek/area-under-curve-web">https://github.com/smycynek/area-under-curve-web</a>
+        </cite>
       </div>
     );
   }
