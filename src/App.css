@@ -2,9 +2,8 @@
   text-align: left;
   margin-left: 20px;
 }
-a {
-  margin-left: 20px;
-}
+
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -18,20 +17,20 @@ a {
 
 hr {
   border: 0;
-    height: 1px;
-  background:black
+    height: 3px;
+  background:pink
 
 }
 input {
-  background-color: lightblue;
+  background-color: lightyellow;
 }
 
 select {
-  background-color: lightblue;
+  background-color: lightyellow;
   font-family: 'Ubuntu', sans-serif;
 }
 body {
-  background-color: lightblue;
+  background-color: lightyellow;
   font-family: 'Ubuntu', sans-serif;
 }
 h1 {

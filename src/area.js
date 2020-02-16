@@ -8,6 +8,19 @@ import InputNumber from 'rc-input-number';
 const area_lib = require('area-under-curve/area_lib')
 const algo = require('area-under-curve/algorithm')
 
+const style = {
+  control: base => ({
+    ...base,
+  
+    
+    // This line disable the blue border
+    borderWidth: "2px",
+    borderRadius: "4px",
+    borderColor: "lightblue"
+  
+  })
+};
+
 class Area extends React.Component {
   constructor(props) {
     super(props);
@@ -83,48 +96,52 @@ class Area extends React.Component {
 
     return (
       
+      
       <div className="App">
         <link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'/>
   
         <h1>Area under curve</h1>
-        
+        <p>Why? Just for <a href="https://github.com/smycynek/area_under_curve/blob/master/README.md">fun</a>.</p>
+       <hr border-width="2px"/>
         <div>
         <h2>Polynomial</h2>
       
         <div>
-        <InputNumber  min= {-10} max= {10}  style={{ borderColor: "black", margin:4, padding:5, width: 50 }}  value={this.state.cubic} onChange={this.handleCubic} /> x<sup>3</sup> 
+        <InputNumber  min= {-10} max= {10}  style={{ borderWidth:"2px", borderColor: "lightblue", margin:4, padding:5, width: 50 }}  value={this.state.cubic} onChange={this.handleCubic} /> x<sup>3</sup> 
         </div>
         <div>
-        <InputNumber  min= {-10} max= {10}  style={{ borderColor: "black", margin:4, padding: 5, width: 50 }}  value={this.state.quadratic} onChange={this.handleQuadratic} /> x<sup>2</sup> 
+        <InputNumber  min= {-10} max= {10}  style={{ borderWidth:"2px", borderColor: "lightblue", margin:4, padding: 5, width: 50 }}  value={this.state.quadratic} onChange={this.handleQuadratic} /> x<sup>2</sup> 
         </div>
         <div>
-        <InputNumber  min= {-10} max= {10}  style={{ borderColor: "black", margin:4, padding: 5, width: 50 }}  value={this.state.linear} onChange={this.handleLinear} />  x
+        <InputNumber  min= {-10} max= {10}  style={{ borderWidth:"2px", borderColor: "lightblue", margin:4, padding: 5, width: 50 }}  value={this.state.linear} onChange={this.handleLinear} />  x
         </div>
         <div>
-        <InputNumber  min= {-10} max= {10}  style={{ borderColor: "black", margin:4, padding: 5, width: 50 }}  value={this.state.constant} onChange={this.handleConstant} /> c
+        <InputNumber  min= {-10} max= {10}  style={{borderWidth:"2px",  borderColor: "lightblue", margin:4, padding: 5, width: 50 }}  value={this.state.constant} onChange={this.handleConstant} /> c
         </div>
         </div>
         <div>
         <h2>Step Size</h2>
        
-        <InputNumber min={0.1} max={1.0} readonly = {true} style={{ borderColor: "black",margin:4, width: 50 }}  step={0.1} value={this.state.step} onChange={this.handleStep} />
+        <InputNumber min={0.1} max={1.0} readonly = {true} style={{ borderWidth:"2px", borderColor: "lightblue",margin:4, width: 50 }}  step={0.1} value={this.state.step} onChange={this.handleStep} />
         </div>
         <div>
         <h2>Bounds</h2>
    
         <div>
-        <label style={{padding:5}} htmlFor="lower">Lower</label> <InputNumber name="upper" style={{ borderColor: "black", width: 50}} min={-10} max={10} step={1} value={this.state.lower} onChange={this.handleLower} />
+        <label style={{padding:5}} htmlFor="lower">Lower</label> <InputNumber name="upper" style={{ borderWidth:"2px", borderColor: "lightblue", width: 50}} min={-10} max={10} step={1} value={this.state.lower} onChange={this.handleLower} />
       
-        <label style={{padding:5}} htmlFor="upper">Upper</label> <InputNumber name="lower" style={{ borderColor: "black", width: 50 }} min={-10} max={10} step={1} value={this.state.upper} onChange={this.handleUpper} />
+        <label style={{padding:5}} htmlFor="upper">Upper</label> <InputNumber name="lower" style={{ borderWidth:"2px", borderColor: "lightblue", width: 50 }} min={-10} max={10} step={1} value={this.state.upper} onChange={this.handleUpper} />
         </div>
         </div>
         <div>
         <h2>Algorithm</h2>
         <React.Fragment>
 
-          <Select options={algorithmOptions} menuPlacement="bottom" 
+          <Select options={algorithmOptions} menuPlacement="bottom"
+            styles = {style}
+            color= "lightblue" 
             className='select'
-            theme={{borderRadius:0, colors: { primary: "black", neutral0:"lightblue" }   }}
+            theme={{borderRadius:0, colors: { primary: "lightblue", neutral1:"lightblue", neutral0:"lightyellow" }   }}
             value={selectedAlgorithm}
             onChange={this.handleAlgorithmChange} />
         </React.Fragment>
@@ -132,6 +149,7 @@ class Area extends React.Component {
         <h2>Output</h2>
         <Output data={
           this.evaluate()} />
+          <hr/>
       </div>
     )
   }
