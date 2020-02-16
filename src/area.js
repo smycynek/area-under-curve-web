@@ -98,7 +98,7 @@ class Area extends React.Component {
       
       
       <div className="App">
-        <link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'/>
+        <link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'/>
   
         <h1>Area under curve</h1>
         <p>Why? Just for <a href="https://github.com/smycynek/area_under_curve/blob/master/README.md">fun</a>.</p>
