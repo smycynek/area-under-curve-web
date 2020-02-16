@@ -15,8 +15,9 @@
 .env.development.local
 .env.test.local
 .env.production.local
-/abc
-abc.zip
+/area_under_curveß
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+area_under_curve.zip
