@@ -1,5 +1,5 @@
 #! /bin/bash
-
+npm run build
 rm -rf area_under_curve
 rm area_under_curve.zip
 mv build area_under_curve
