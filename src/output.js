@@ -1,28 +1,40 @@
 import React from 'react';
 
+
+/**
+ * Simple component to render a + sign
+ */
 function Plus(props) {
   return "+"
 }
 
-function Term({ power, coefficient = null }) {
+
+/**
+ * Component to render a polynomial term, such as
+ * x, -x, 2x, or 3x^2
+ */
+function Term({ power, coefficient  }) {
   let renderedCoefficient = coefficient
   if ((coefficient === -1) && (power !==0)) {
-    renderedCoefficient = "-"
+    renderedCoefficient = "-" //replace '-1' with just '-'
   }
   if ((coefficient === 1) && (power !==0)) {
-    renderedCoefficient = null
+    renderedCoefficient = null //replace '1' with nothing
   }
-  if (power === 0) {
+  if (power === 0) { // constant -> render only coefficient
     return <React.Fragment> {renderedCoefficient}</React.Fragment>
   }
-  else if (power === 1) {
+  else if (power === 1) { // linear -> render just 'x'
     return <React.Fragment> {renderedCoefficient}x</React.Fragment>
   }
-  else {
+  else { // higher powers --> render superscript exponent
     return <React.Fragment> {renderedCoefficient}x<sup>{power}</sup></React.Fragment>
   }
 }
 
+/**
+ * Higher order component to render cubic term
+ */
 function CubicTerm({ coefficient }) {
   if (coefficient === 0) {
     return null
@@ -30,6 +42,9 @@ function CubicTerm({ coefficient }) {
   return (<Term power={3} coefficient={coefficient} />)
 }
 
+/**
+ * Higher order component to render quadratic term
+ */
 function QuadraticTerm({ coefficient }) {
   if (coefficient === 0) {
     return null
@@ -37,6 +52,9 @@ function QuadraticTerm({ coefficient }) {
   return (<Term power={2} coefficient={coefficient} />);
 }
 
+/**
+ * Higher order component to render linear term
+ */
 function LinearTerm({ coefficient }) {
   if (coefficient === 0) {
     return null
@@ -44,6 +62,9 @@ function LinearTerm({ coefficient }) {
   return (<Term power={1} coefficient={coefficient} />);
 }
 
+/**
+ * Higher order component to render constant term
+ */
 function ConstantTerm({ coefficient }) {
   if (coefficient === 0) {
     return <React.Fragment />
@@ -51,6 +72,12 @@ function ConstantTerm({ coefficient }) {
   return (<Term power={0} coefficient={coefficient} />);
 }
 
+/**
+ * Query the term (by power) and the rest of the polynomial to see
+ * if we need a + sign to join two terms.  For example, if we have a quadratic 
+ * term but no cubic term, there is no need for a plus sign between the
+ * (absent) cubic term and the quadratic.
+ */
 function needsConcatination(power, data) {
   switch (power) {
     case 3:
@@ -66,6 +93,14 @@ function needsConcatination(power, data) {
   }
 }
 
+/**
+ * Render a polynomial from a Map of exponent->coefficient data
+ * Optionally render plus signs for positive coefficients where
+ * they make sense in traditional equation formatting.
+ * 
+ * Example, render:
+ * f(x) = 2x^2 + x, not f(x) = 0x^3 + 2x^2 + 1x + 0
+ */
 function Polynomial({ data }) {
   return (
     <React.Fragment>
@@ -79,6 +114,9 @@ function Polynomial({ data }) {
   )
 }
 
+/**
+ * Component to display calculated data from the polyomial, boundaries, and step size
+ */
 function Output({ data }) {
   return (
     <div>

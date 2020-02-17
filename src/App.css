@@ -3,7 +3,6 @@
   margin-left: 20px;
 }
 
-
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -36,15 +35,12 @@ body {
 h1 {
   font-size: 18px;
   font-family: 'Ubuntu', sans-serif;
-
 }
 
 h2 {
   font-size: 12px;
   font-family: 'Ubuntu', sans-serif;
 }
-
-
 
 a, p,span,label,li,ul,input {
   font-family: 'Ubuntu', sans-serif;
