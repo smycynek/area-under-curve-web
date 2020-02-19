@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+
 import './App.css'
 import Output from './output'
 import Select from 'react-select'
@@ -80,6 +81,7 @@ class Area extends React.Component {
     handleStep = value => {
         this.setState({ step: value })
     }
+
     /**
      * Method to collect state inputs, create polynomial, and calculate area
      * using a chosen algorithm

@@ -1,6 +1,27 @@
 import React from 'react'
 
 /**
+ * Query the term (by power) and the rest of the polynomial to see
+ * if we need a + sign to join two terms.  For example, if we have a quadratic
+ * term but no cubic term, there is no need for a plus sign between the
+ * (absent) cubic term and the quadratic.
+ */
+function needsConcatination(power, data) {
+    switch (power) {
+        case 3:
+            return data.get(3) && data.get(2)
+        case 2:
+            return data.get(1) && (data.get(3) || data.get(2))
+        case 1:
+            return data.get(0) && (data.get(3) || data.get(2) || data.get(1))
+        case 0:
+            return false
+        default:
+            return false
+    }
+}
+
+/**
  * Simple component to render a + sign
  */
 function Plus(props) {
@@ -74,27 +95,6 @@ function ConstantTerm({ coefficient }) {
         return <React.Fragment />
     }
     return <Term power={0} coefficient={coefficient} />
-}
-
-/**
- * Query the term (by power) and the rest of the polynomial to see
- * if we need a + sign to join two terms.  For example, if we have a quadratic
- * term but no cubic term, there is no need for a plus sign between the
- * (absent) cubic term and the quadratic.
- */
-function needsConcatination(power, data) {
-    switch (power) {
-        case 3:
-            return data.get(3) && data.get(2)
-        case 2:
-            return data.get(1) && (data.get(3) || data.get(2))
-        case 1:
-            return data.get(0) && (data.get(3) || data.get(2) || data.get(1))
-        case 0:
-            return false
-        default:
-            return false
-    }
 }
 
 /**
